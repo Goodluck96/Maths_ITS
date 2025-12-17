@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.example.org/mathITS#"
+    xml:base="http://www.example.org/mathITS"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Ontology rdf:about="http://www.example.org/mathITS"/>
+
+    
+    #CLASSES
+    
+    <owl:Class rdf:about="#Student"/>
+    <owl:Class rdf:about="#Skill"/>
+    <owl:Class rdf:about="#Problem"/>
+    <owl:Class rdf:about="#MasteryLevel"/>
+    <owl:Class rdf:about="#Feedback"/>
+    <owl:Class rdf:about="#Tutor"/>
+
+    #Skill subclasses
+    <owl:Class rdf:about="#Addition">
+        <rdfs:subClassOf rdf:resource="#Skill"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Multiplication">
+        <rdfs:subClassOf rdf:resource="#Skill"/>
+    </owl:Class>
+
+    
+    #OBJECT PROPERTIES
+    
+    <owl:ObjectProperty rdf:about="#hasSkill">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="#Skill"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasProblem">
+        <rdfs:domain rdf:resource="#Skill"/>
+        <rdfs:range rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasMastery">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="#MasteryLevel"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#providesFeedback">
+        <rdfs:domain rdf:resource="#Tutor"/>
+        <rdfs:range rdf:resource="#Feedback"/>
+    </owl:ObjectProperty>
+
+    
+    #DATA PROPERTIES
+    
+    <owl:DatatypeProperty rdf:about="#masteryScore">
+        <rdfs:domain rdf:resource="#MasteryLevel"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#difficultyLevel">
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#problemText">
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    
+    #INDIVIDUALS
+    
+    <owl:NamedIndividual rdf:about="#Student1">
+        <rdf:type rdf:resource="#Student"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#AdditionSkill">
+        <rdf:type rdf:resource="#Addition"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#MultiplicationSkill">
+        <rdf:type rdf:resource="#Multiplication"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Mastery_Addition">
+        <rdf:type rdf:resource="#MasteryLevel"/>
+        <masteryScore rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.6</masteryScore>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Mastery_Multiplication">
+        <rdf:type rdf:resource="#MasteryLevel"/>
+        <masteryScore rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.4</masteryScore>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
